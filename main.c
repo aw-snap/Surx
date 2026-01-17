@@ -24,10 +24,6 @@ typedef struct Entity {
 	char *name;
 } Entity;
 
-typedef struct Chunk {
-	const char data[CHUNK_SIZE];
-} Chunk;
-
 Dict* create_dict(void);
 void dict_set(Dict *dict, const char *key, void *value, FreeFunc free_val);
 void* dict_get(Dict *dict, const char *key);
@@ -116,6 +112,11 @@ int main(void) {
 	} else {
 		printf("Entity not found!\n");
 	}
+
+	char *chunk = malloc(CHUNK_SIZE);
+	memset(chunk, '0', CHUNK_SIZE);
+	chunk[0] = '1';
+	printf("%c\n", chunk[0]);
 
     free_dict(entities);
     return 0;
